@@ -1,0 +1,21 @@
+1 建立命名会话 
+
+# tmux new -s session  
+进入tmux。 
+PREFIX c 创建新的窗口 
+PREFIX d 退出tmux窗口，tmux仍在后台运行，可以通过tmux attach进入到指定的会话 
+
+# tmux new -s session -d #在后台建立会话 
+# tmux ls #列出会话 
+# tmux attach -t session #进入某个会话 
+
+2 复制模式copy-mode 
+a.PREFIX [ 进入复制模式 
+b.按 space 开始复制，移动光标选择复制区域 
+c.按 Enter 复制并退出copy-mode。 
+d.将光标移动到指定位置，按 PREIFX ] 粘贴 
+如果不在配置文件中进行如下配置，在VIM中复制模式无法完成操作 
+在~/.tmux.conf中加入如下行 
+setw -g mode-keys vi 
+
+
