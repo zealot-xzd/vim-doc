@@ -42,6 +42,8 @@
     Plugin 'honza/vim-snippets'
     Plugin 'suan/vim-instant-markdown'
     Plugin 'plasticboy/vim-markdown'
+    Plugin 'altercation/vim-colors-solarized'
+    Plugin 'vim-scripts/a.vim'
 
     " plugin from http://vim-scripts.org/vim/scripts.html
     "Plugin 'L9'
@@ -103,7 +105,7 @@
 " }
 
 " General {
-   " colorscheme molokai
+    colorscheme solarized
     set background=light        " Assume a light background
 
     " Allow to trigger background
@@ -165,12 +167,12 @@
     augroup END
 
     " Setting up the directories {
-        set nobackup                  " Backups are nice ...
-        if has('persistent_undo')
-            set undofile                " So is persistent undo ...
-            set undolevels=1000         " Maximum number of changes that can be undone
-            set undoreload=10000        " Maximum number lines to save for undo on a buffer reload
-        endif
+    "    set nobackup                  " Backups are nice ...
+    "    if has('persistent_undo')
+    "        set undofile                " So is persistent undo ...
+    "        set undolevels=1000         " Maximum number of changes that can be undone
+    "        set undoreload=10000        " Maximum number lines to save for undo on a buffer reload
+    "    endif
 
     " }
 " }
@@ -770,4 +772,5 @@ end
 
 
 let g:ag_prg="<custom-ag-path-goes-here> --vimgrep"
+
 
