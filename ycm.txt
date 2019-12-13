@@ -9,7 +9,11 @@ install.py --clang-completer
 LLVM的版本在C:\Users\zealot\.vim\bundle\YouCompleteMe\third_party\ycmd\cpp\ycm\CMakeLists.txt中可以查询：
 
 方法二
+cd ~
+mkdir ycm_build
+cd ycm_build
 cmake -G "Visual Studio 15 2017 Win64" -DPATH_TO_LLVM_ROOT=D:\LLVM -DPYTHON_LIBRARY=D:\Python27\libs\python27.lib  . c:\Users\zealot\.vim\bundle\YouCompleteMe\third_party\ycmd\cpp
+当需要c语法分析才加“-DPATH_TO_LLVM_ROOT=D:\LLVM”
 cmake --build . --target ycm_core --config Release
 注意: cmake的版本一定要能支持，Visual Studio版本的工程创建。
 
