@@ -1,78 +1,31 @@
-" bundle config {
-    set nocompatible              " be iMproved, required
-    filetype off                  " required
+" Specify a directory for plugins
+" - For Neovim: stdpath('data') . '/plugged'
+" - Avoid using standard Vim directory names like 'plugin'
+call plug#begin('~/.vim/plugged')
+    Plug 'mhinz/vim-startify'
+    Plug 'tpope/vim-fugitive'
+    Plug 'scrooloose/nerdtree'
+    Plug 'vim-scripts/bufexplorer.zip'
+    Plug 'kien/ctrlp.vim'
+    Plug 'scrooloose/nerdcommenter'
+    Plug 'majutsushi/tagbar'
+    Plug 'scrooloose/syntastic'
+    Plug 'easymotion/vim-easymotion'
+    Plug 'dyng/ctrlsf.vim'
+    Plug 'terryma/vim-multiple-cursors'
+    Plug 'yonchu/accelerated-smooth-scroll'
+    Plug 'vim-scripts/Mark--Karkat'
+    Plug 'vim-scripts/sessionman.vim'
+    Plug 'klen/python-mode'
+    Plug 'tacahiroy/ctrlp-funky'
+    Plug 'suan/vim-instant-markdown'
+    Plug 'plasticboy/vim-markdown'
+    Plug 'altercation/vim-colors-solarized'
+    Plug 'Yggdroot/indentLine'
+    Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
-    " set the runtime path to include Vundle and initialize
-    set rtp+=~/.vim/bundle/Vundle.vim
-    call vundle#begin()
-    " alternatively, pass a path where Vundle should install plugins
-    "call vundle#begin('~/some/path/here')
-
-    " let Vundle manage Vundle, required
-    Plugin 'VundleVim/Vundle.vim'
-
-    " The following are examples of different formats supported.
-    " Keep Plugin commands between vundle#begin/end.
-    " plugin on GitHub repo
-    Plugin 'tpope/vim-fugitive'
-    Plugin 'scrooloose/nerdtree'
-    Plugin 'vim-scripts/bufexplorer.zip'
-    Plugin 'kien/ctrlp.vim'
-    "Plugin 'tpope/vim-surround'
-    Plugin 'scrooloose/nerdcommenter'
-    "Plugin 'godlygeek/tabular'
-    Plugin 'majutsushi/tagbar'
-    Plugin 'scrooloose/syntastic'
-    Plugin 'easymotion/vim-easymotion'
-    Plugin 'vim-airline'
-    Plugin 'dyng/ctrlsf.vim'
-    Plugin 'terryma/vim-multiple-cursors'
-    Plugin 'yonchu/accelerated-smooth-scroll'
-    Plugin 'vim-scripts/Mark--Karkat'
-    Plugin 'vim-scripts/sessionman.vim'
-    Plugin 'ggreer/the_silver_searcher'
-    Plugin 'klen/python-mode'
-    Plugin 'tacahiroy/ctrlp-funky'
-    Plugin 'ack.vim'
-    Plugin 'ag.vim'
-    Plugin 'TaskList.vim'
-    Plugin 'sirver/ultisnips'
-    Plugin 'honza/vim-snippets'
-    Plugin 'suan/vim-instant-markdown'
-    Plugin 'plasticboy/vim-markdown'
-    Plugin 'altercation/vim-colors-solarized'
-    Plugin 'vim-scripts/a.vim'
-    Plugin 'Valloric/YouCompleteMe'
-    Plugin 'Yggdroot/indentLine'
-    
-    " plugin from http://vim-scripts.org/vim/scripts.html
-    "Plugin 'L9'
-    " Git plugin not hosted on GitHub
-    "Plugin 'git://git.wincent.com/command-t.git'
-    " git repos on your local machine (i.e. when working on your own plugin)
-    "Plugin 'file:///home/gmarik/path/to/plugin'
-    " The sparkup vim script is in a subdirectory of this repo called vim.
-    " Pass the path to set the runtimepath properly.
-    "Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
-    " Avoid a name conflict with L9
-    "Plugin 'user/L9', {'name': 'newL9'}
-
-    " All of your Plugins must be added before the following line
-    call vundle#end()            " required
-    filetype plugin indent on    " required
-    " To ignore plugin indent changes, instead use:
-    "filetype plugin on
-    "
-    " Brief help
-    " :PluginList       - lists configured plugins
-    " :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
-    " :PluginSearch foo - searches for foo; append `!` to refresh local cache
-    " :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
-    "
-    " see :h vundle for more details or wiki for FAQ
-    " Put your non-Plugin stuff after this line
-"}
-
+" Initialize plugin system
+call plug#end()
 
 
 " Environment {
@@ -328,7 +281,7 @@
 
 
     " NerdTree {
-        if isdirectory(expand("~/.vim/bundle/nerdtree"))
+        if isdirectory(expand("~/.vim/plugged/nerdtree"))
             map <C-e> <plug>NERDTreeTabsToggle<CR>
             nmap <leader>nt :NERDTree<CR>
 
@@ -343,43 +296,13 @@
         endif
     " }
 
-    " Tabularize {
-        if isdirectory(expand("~/.vim/bundle/tabular"))
-            nmap <Leader>a& :Tabularize /&<CR>
-            vmap <Leader>a& :Tabularize /&<CR>
-            nmap <Leader>a= :Tabularize /^[^=]*\zs=<CR>
-            vmap <Leader>a= :Tabularize /^[^=]*\zs=<CR>
-            nmap <Leader>a=> :Tabularize /=><CR>
-            vmap <Leader>a=> :Tabularize /=><CR>
-            nmap <Leader>a: :Tabularize /:<CR>
-            vmap <Leader>a: :Tabularize /:<CR>
-            nmap <Leader>a:: :Tabularize /:\zs<CR>
-            vmap <Leader>a:: :Tabularize /:\zs<CR>
-            nmap <Leader>a, :Tabularize /,<CR>
-            vmap <Leader>a, :Tabularize /,<CR>
-            nmap <Leader>a,, :Tabularize /,\zs<CR>
-            vmap <Leader>a,, :Tabularize /,\zs<CR>
-            nmap <Leader>a<Bar> :Tabularize /<Bar><CR>
-            vmap <Leader>a<Bar> :Tabularize /<Bar><CR>
-        endif
-    " }
-
-    " Session List {
-        set sessionoptions=blank,buffers,curdir,folds,tabpages,winsize
-        if isdirectory(expand("~/.vim/bundle/sessionman.vim/"))
-            nmap <leader>sl :SessionList<CR>
-            nmap <leader>ss :SessionSave<CR>
-            nmap <leader>sc :SessionClose<CR>
-        endif
-    " }
-
     " PyMode {
         " Disable if python support not present
         if !has('python') && !has('python3')
             let g:pymode = 0
         endif
 
-        if isdirectory(expand("~/.vim/bundle/python-mode"))
+        if isdirectory(expand("~/.vim/plugged/python-mode"))
             let g:pymode_lint_checkers = ['pyflakes']
             let g:pymode_trim_whitespaces = 0
             let g:pymode_options = 0
@@ -389,7 +312,7 @@
     " }
 
     " ctrlp {
-        if isdirectory(expand("~/.vim/bundle/ctrlp.vim/"))
+        if isdirectory(expand("~/.vim/plugged/ctrlp.vim/"))
             let g:ctrlp_working_path_mode = 'ra'
             nnoremap <silent> <leader>fb :CtrlPBuffer<CR>
             nnoremap <silent> <leader>fm :CtrlPMRU<CR>
@@ -420,7 +343,7 @@
                 \ 'fallback': s:ctrlp_fallback
             \ }
 
-            if isdirectory(expand("~/.vim/bundle/ctrlp-funky/"))
+            if isdirectory(expand("~/.vim/plugged/ctrlp-funky/"))
                 " CtrlP extensions
                 let g:ctrlp_extensions = ['funky']
                 "let g:ctrlp_funky_matchtype = 'path'
@@ -434,19 +357,13 @@
     "}
 
     " TagBar {
-        if isdirectory(expand("~/.vim/bundle/tagbar/"))
+        if isdirectory(expand("~/.vim/plugged/tagbar/"))
             nnoremap <silent> <leader>tt :TagbarToggle<CR>
         endif
     "}
 
-    " Rainbow {
-        if isdirectory(expand("~/.vim/bundle/rainbow/"))
-            let g:rainbow_active = 1 "0 if you want to enable it later via :RainbowToggle
-        endif
-    "}
-
     " indent_guides {
-        if isdirectory(expand("~/.vim/bundle/vim-indent-guides/"))
+        if isdirectory(expand("~/.vim/plugged/vim-indent-guides/"))
             let g:indent_guides_start_level = 2
             let g:indent_guides_guide_size = 1
             let g:indent_guides_enable_on_vim_startup = 1
@@ -615,7 +532,7 @@ set ffs=unix,dos
 "nmap <leader>fu :se ff=unix<cr>
 
 "open current file in sourceinsight
-nmap <silent> <leader>si :update<CR>:silent !start "D:\Program Files (x86)\Source Insight 3\Insight3.Exe" -i +<C-R>=expand(line("."))<CR> %<CR>
+nmap <silent> <leader>si :update<CR>:silent !start "D:\Program Files (x86)\Source Insight 4.0\sourceinsight4.exe" -i +<C-R>=expand(line("."))<CR> %<CR>
 
 "open file in explorer
 if WINDOWS()
@@ -689,54 +606,4 @@ map <silent> <leader>tb :Tagbar<CR>
    " BufExplorer 
 """"""""""""""""""""""""""""""
 map <silent> <leader>be :BufExplorer<CR>
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" cscope setting
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-if has("cscope")
-  set csprg=/usr/bin/cscope
-  set csto=1
-  set cst
-  set nocsverb
-  " add any database in current directory
-  if filereadable("cscope.out")
-      cs add cscope.out
-  endif
-  set csverb
-endif
-
-nmap <C-\>s :cs find s <C-R>=expand("<cword>")<CR><CR>
-nmap <C-\>g :cs find g <C-R>=expand("<cword>")<CR><CR>
-nmap <C-\>c :cs find c <C-R>=expand("<cword>")<CR><CR>
-nmap <C-\>t :cs find t <C-R>=expand("<cword>")<CR><CR>
-nmap <C-\>e :cs find e <C-R>=expand("<cword>")<CR><CR>
-nmap <C-\>f :cs find f <C-R>=expand("<cfile>")<CR><CR>
-nmap <C-\>i :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
-nmap <C-\>d :cs find d <C-R>=expand("<cword>")<CR><CR>
-
-
-let g:UltiSnipsSnippetDirectories=['UltiSnips']
-let g:UltiSnipsSnippetsDir = '~/.vim/UltiSnips'
-let g:UltiSnipsExpandTrigger = '<F8>'
-let g:UltiSnipsListSnippets = '<C-Tab>'
-let g:UltiSnipsJumpForwardTrigger = '<Tab>'
-let g:UltiSnipsJumpBackwardTrigger = '<S-Tab>'
-
-let g:ag_prg="<custom-ag-path-goes-here> --vimgrep"
-
-"YouCompleteMe configure
-let g:ycm_auto_trigger = 1
-let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
-
-let g:ycm_error_symbol = '>>'
-let g:ycm_warning_symbol = '>*'
-nnoremap <leader>gl :YcmCompleter GoToDeclaration<CR>
-nnoremap <leader>gf :YcmCompleter GoToDefinition<CR>
-nnoremap <leader>gg :YcmCompleter GoToDefinitionElseDeclaration<CR>
-nmap <F4> :YcmDiags<CR>
-
-"不查询ultisnips提供的代码模板补全，如果需要，设置成1即可
-"let g:ycm_use_ultisnips_completer=1
-set completeopt-=preview
-let g:ycm_collect_identifiers_from_tag_files = 1
 
